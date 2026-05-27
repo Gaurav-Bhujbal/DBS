@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "@/assets/dbs/DBSLogo.png";
-import logoFooter from "@/assets/dbs/logo-footer.jpg";
+import logoFooter from "@/assets/dbs/DBSLogo.png";
 
 const NAV = [
     { label: "Home", to: "/" },
