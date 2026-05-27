@@ -275,8 +275,8 @@ export function Footer() {
                     ))}
                 </div>
 
-                <div className="py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12">
+                <div className="py-8 md:py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12">
                         <div className="flex items-center gap-4">
                             <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)]">
                                 <Phone className="h-5 w-5" />

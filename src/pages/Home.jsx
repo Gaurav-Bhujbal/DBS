@@ -596,7 +596,7 @@ function TrustStats() {
                                 </div>
                                 <span className="px-4 py-1.5 rounded-full bg-white/10 text-sm font-semibold">Live</span>
                             </div>
-                            <div className="grid grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 {stats.map((s, idx) => (
                                     <motion.div
                                         key={s.l}
@@ -691,7 +691,7 @@ function RadioGroup({ label, options, name }) {
 
 function MovesBanner() {
     return (
-        <section className="relative min-h-[450px] sm:min-h-0 sm:h-[600px] flex items-center overflow-hidden">
+        <section className="relative min-h-[450px] py-8 sm:min-h-0 sm:h-[600px] flex items-center overflow-hidden">
             <div
                 className="absolute inset-0 bg-cover bg-fixed bg-center transition-transform duration-[10s] hover:scale-110"
                 style={{
@@ -840,7 +840,7 @@ function SpecialCards() {
     ];
     return (
         <section className="bg-white py-8 sm:py-12">
-            <div className="mx-auto max-w-7xl px-6 grid sm:grid-cols-2 gap-6 sm:gap-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 grid sm:grid-cols-2 gap-6 sm:gap-8">
                 {cards.map((c, i) => (
                     <motion.div
                         key={c.t}
@@ -849,7 +849,7 @@ function SpecialCards() {
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, duration: 0.5 }}
                         whileHover={{ y: -8 }}
-                        className="group relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden h-[240px] sm:h-[300px] flex items-end shadow-xl hover:shadow-2xl transition-all"
+                        className="group relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden h-[260px] sm:h-[300px] flex items-end shadow-xl hover:shadow-2xl transition-all"
                     >
                         <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -857,11 +857,22 @@ function SpecialCards() {
                                 backgroundImage: `linear-gradient(to top, rgba(15,23,42,0.9), rgba(15,23,42,0.2)), url(${specialBg})`,
                             }}
                         />
-                        <div className="relative p-10 w-full">
-                            <h3 className="font-serif text-3xl text-white mb-3 max-w-xs">{c.t}</h3>
-                            <p className="text-slate-300 mb-6 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">{c.d}</p>
-                            <a href="#" className="inline-flex items-center gap-2 text-[var(--brand-accent)] font-bold group/btn">
+
+                        <div className="relative p-5 sm:p-10 w-full">
+                            <h3 className="font-serif text-2xl sm:text-3xl leading-tight text-white mb-3 max-w-[220px] sm:max-w-xs">
+                                {c.t}
+                            </h3>
+
+                            <p className="text-sm sm:text-base text-slate-300 mb-6 max-w-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-500">
+                                {c.d}
+                            </p>
+
+                            <a
+                                href="#"
+                                className="inline-flex items-center gap-2 text-[var(--brand-accent)] font-bold text-sm sm:text-base group/btn"
+                            >
                                 Discover More
+
                                 <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-2" />
                             </a>
                         </div>
