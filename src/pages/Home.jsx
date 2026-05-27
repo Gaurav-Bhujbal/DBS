@@ -227,13 +227,14 @@ function Hero() {
                         transition={{ delay: 0.8, duration: 0.6 }}
                         className="mt-10 flex flex-wrap justify-center gap-4"
                     >
-                        <motion.button
+                        <motion.a
                             whileHover={{ scale: 1.06, y: -2 }}
                             whileTap={{ scale: 0.95 }}
+                            href="#quote"
                             className="rounded-full bg-[var(--brand-accent)] text-white px-10 py-4 text-base font-bold shadow-xl shadow-orange-500/30 transition-all"
                         >
                             Get a Quote
-                        </motion.button>
+                        </motion.a>
                         <motion.button
                             whileHover={{ scale: 1.06, y: -2 }}
                             whileTap={{ scale: 0.95 }}
@@ -632,7 +633,7 @@ function TrustStats() {
 
 function Calculator() {
     return (
-        <section className="bg-slate-50 py-16 sm:py-24">
+        <section id="quote" className="bg-slate-50 py-16 sm:py-24">
             <div className="mx-auto max-w-7xl px-6">
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                     <div className="relative hidden sm:block">
