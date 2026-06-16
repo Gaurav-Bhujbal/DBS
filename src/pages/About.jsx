@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
     ArrowRight,
-    ChevronLeft,
-    ChevronRight,
     Globe,
     Network,
     ShieldCheck,
@@ -22,6 +20,7 @@ import {
 import { PageShell } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
 
+import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import aboutHero from "@/assets/dbs/about-hero.jpg";
 import indiaMap from "@/assets/dbs/india-map.jpg";
 import driverImg from "@/assets/dbs/driver.jpg";
@@ -35,34 +34,13 @@ import calcTruck from "@/assets/dbs/img5.jpg";
 
 export default function About() {
     const modes = [
-        { n: "01", img: roadImg, t: "Road Transport", desc: "We are believed to be the best in catering to any transportation requirement across the country with fast, efficient and express logistics services." },
-        { n: "02", img: railImg, t: "Rail Transport", desc: "We are believed to be the best in catering to any transportation requirement across the country with fast, efficient and express logistics services." },
-        { n: "03", img: airImg, t: "Air Transport", desc: "We are believed to be the best in catering to any transportation requirement across the country with fast, efficient and express logistics services." },
-        { n: "04", img: heroWorker, t: "Warehousing", desc: "We are believed to be the best in catering to any transportation requirement across the country with fast, efficient and express logistics services." },
-        { n: "05", img: calcTruck, t: "Last-Mile Delivery", desc: "We are believed to be the best in catering to any transportation requirement across the country with fast, efficient and express logistics services." },
+        { n: "01", img: roadImg, t: "Freight Forwarding", desc: "Integrated road, rail, and air freight forwarding with complete documentation, customs compliance, and real-time tracking across every leg of your shipment's journey." },
+        { n: "02", img: packageImg, t: "Warehousing & Distribution", desc: "Strategically located, secure warehousing with inventory management, pick-and-pack services, and distribution aligned to your supply chain — keeping stock always within reach." },
+        { n: "03", img: airImg, t: "Air Cargo Services", desc: "Priority air freight for time-critical and high-value shipments, with express booking, customs clearance support, and next-day delivery options across India and beyond." },
+        { n: "04", img: railImg, t: "Rail Transportation", desc: "High-capacity, cost-effective rail freight solutions for bulk consignments with reliable transit schedules and careful end-to-end cargo handling." },
+        { n: "05", img: calcTruck, t: "Last-Mile Delivery", desc: "Dedicated last-mile fleet ensuring reliable doorstep delivery to every corner of India — with real-time tracking, live updates, and verified proof of delivery." },
     ];
 
-    const [visibleCount, setVisibleCount] = useState(3);
-    const maxIndex = Math.max(0, modes.length - visibleCount);
-    const [startIndex, setStartIndex] = useState(0);
-
-    useEffect(() => {
-        const updateCount = () => {
-            if (window.innerWidth < 640) setVisibleCount(1);
-            else if (window.innerWidth < 1024) setVisibleCount(2);
-            else setVisibleCount(3);
-        };
-        updateCount();
-        window.addEventListener("resize", updateCount);
-        return () => window.removeEventListener("resize", updateCount);
-    }, []);
-
-    useEffect(() => {
-        setStartIndex((i) => Math.min(i, maxIndex));
-    }, [maxIndex]);
-
-    const handlePrev = () => setStartIndex((i) => Math.max(0, i - 1));
-    const handleNext = () => setStartIndex((i) => Math.min(maxIndex, i + 1));
 
     return (
         <PageShell>
@@ -82,14 +60,11 @@ export default function About() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="lg:col-span-7 text-left"
                         >
-                            <motion.span
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.2, duration: 0.5 }}
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-[var(--brand-accent)] mb-6 shadow-lg shadow-black/10"
-                            >
-                                <Globe className="h-3.5 w-3.5" /> DBS Express Cargo
-                            </motion.span>
+                            <img
+                                src={dbsLogo}
+                                alt="DBS Express Cargo Logo"
+                                className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
+                            />
                             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
                                 {"Smart Logistics ".split("").map((char, i) => (
                                     <motion.span key={`a1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>
@@ -275,6 +250,11 @@ export default function About() {
                             transition={{ duration: 0.6 }}
                             className="max-w-xl"
                         >
+                            <img
+                                src={dbsLogo}
+                                alt="DBS Express Cargo Logo"
+                                className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                            />
                             <div className="text-xs uppercase tracking-[0.25em] text-[var(--brand-blue)] font-bold mb-3">Superior Standards</div>
                             <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight">Why We Move Better</h2>
                         </motion.div>
@@ -331,6 +311,11 @@ export default function About() {
                         transition={{ duration: 0.6 }}
                         className="text-left"
                     >
+                        <img
+                            src={dbsLogo}
+                            alt="DBS Express Cargo Logo"
+                            className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                        />
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/80 backdrop-blur-md border border-blue-100/50 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[var(--brand-blue)] mb-5 shadow-sm shadow-blue-500/5">
                             <Activity className="h-3.5 w-3.5 animate-pulse text-[var(--brand-blue)]" /> Enterprise Logistics
                         </div>
@@ -441,64 +426,44 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="mx-auto max-w-7xl px-6 py-10 sm:py-20 text-left overflow-hidden">
-                <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-md"
-                    >
-                        <div className="text-xs uppercase tracking-[0.25em] text-[var(--brand-blue)] font-bold mb-3">Multimodal Transport</div>
-                        <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight">We manage logistics from all over the world</h2>
-                    </motion.div>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={handlePrev}
-                            disabled={startIndex === 0}
-                            className="h-14 w-14 rounded-full border border-slate-200 bg-white/80 text-[var(--brand-blue)] shadow-sm backdrop-blur flex items-center justify-center transition-all duration-300 hover:bg-[var(--brand-blue)] hover:text-white hover:border-[var(--brand-blue)] disabled:opacity-40 cursor-pointer"
-                            aria-label="Previous"
-                        >
-                            <ChevronLeft />
-                        </button>
-                        <button
-                            onClick={handleNext}
-                            disabled={startIndex === maxIndex}
-                            className="h-14 w-14 rounded-full border border-slate-200 bg-white/80 text-[var(--brand-blue)] shadow-sm backdrop-blur flex items-center justify-center transition-all duration-300 hover:bg-[var(--brand-blue)] hover:text-white hover:border-[var(--brand-blue)] disabled:opacity-40 cursor-pointer"
-                            aria-label="Next"
-                        >
-                            <ChevronRight />
-                        </button>
-                    </div>
-                </div>
+            <section className="mx-auto max-w-7xl px-6 py-10 sm:py-20 text-left">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="max-w-md mb-12"
+                >
+                    <div className="text-xs uppercase tracking-[0.25em] text-[var(--brand-blue)] font-bold mb-3">Our Core Services</div>
+                    <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight">End-to-End Logistics Solutions for Every Business Need</h2>
+                </motion.div>
 
-                <div className="overflow-hidden">
-                    <div
-                        className="flex transition-transform duration-500 ease-in-out"
-                        style={{ transform: `translateX(-${startIndex * (100 / visibleCount)}%)` }}
-                    >
-                        {modes.map((m) => (
-                            <div key={m.n} style={{ width: `${100 / visibleCount}%` }} className="flex-shrink-0 px-4">
-                                <article className="group relative rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 p-4 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-slate-200/50">
-                                    <div className="relative h-64 overflow-hidden rounded-[2rem] mb-8">
-                                        <img src={m.img} alt={m.t} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-                                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-2xl text-xl font-black text-[var(--brand-blue)] shadow-sm">
-                                            {m.n}
-                                        </div>
-                                    </div>
-                                    <div className="px-4 pb-4">
-                                        <h3 className="text-2xl font-bold text-[var(--brand-navy)] mb-3 group-hover:text-[var(--brand-blue)] transition-colors">{m.t}</h3>
-                                        <p className="text-muted-foreground leading-relaxed mb-6">{m.desc}</p>
-                                        <a href="#" className="inline-flex items-center gap-2 text-[var(--brand-blue)] font-bold group/link">
-                                            Read More
-                                            <ArrowRight className="h-5 w-5 transition-transform group-hover/link:translate-x-2" />
-                                        </a>
-                                    </div>
-                                </article>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {modes.map((m, i) => (
+                        <motion.article
+                            key={m.n}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
+                            className="group relative rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 p-4 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-slate-200/50"
+                        >
+                            <div className="relative h-64 overflow-hidden rounded-[2rem] mb-8">
+                                <img src={m.img} alt={m.t} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-2xl text-xl font-black text-[var(--brand-blue)] shadow-sm">
+                                    {m.n}
+                                </div>
                             </div>
-                        ))}
-                    </div>
+                            <div className="px-4 pb-4">
+                                <h3 className="text-2xl font-bold text-[var(--brand-navy)] mb-3 group-hover:text-[var(--brand-blue)] transition-colors">{m.t}</h3>
+                                <p className="text-muted-foreground leading-relaxed mb-6">{m.desc}</p>
+                                <a href="#" className="inline-flex items-center gap-2 text-[var(--brand-blue)] font-bold group/link">
+                                    Read More
+                                    <ArrowRight className="h-5 w-5 transition-transform group-hover/link:translate-x-2" />
+                                </a>
+                            </div>
+                        </motion.article>
+                    ))}
                 </div>
             </section>
 
@@ -559,30 +524,72 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center max-w-2xl mx-auto mb-12"
+                    className="text-center mb-14"
                 >
-                    <div className="text-xs uppercase tracking-[0.3em] text-[var(--brand-blue)] font-bold mb-3">Our Core Philosophy</div>
-                    <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight">Secure courier for small & big packages</h2>
-                    <div className="mt-6 flex flex-wrap justify-center gap-3">
-                        {["Focus", "Accountability", "Speed", "Transparency"].map((v, idx) => (
-                            <motion.span
-                                key={v}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                    <img
+                        src={dbsLogo}
+                        alt="DBS Express Cargo Logo"
+                        className="h-20 w-auto object-contain mx-auto mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                    />
+                    <div className="text-xs uppercase tracking-[0.3em] text-[var(--brand-blue)] font-bold mb-3">Who We Are</div>
+                    <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight max-w-3xl mx-auto">
+                        Connecting Businesses, Delivering Success Across the Nation
+                    </h2>
+                    <p className="mt-4 text-muted-foreground leading-relaxed text-base max-w-2xl mx-auto">
+                        Built on a foundation of trust, speed, and reliability — every shipment we handle is backed by a commitment to excellence that has earned us the confidence of 600+ businesses across India.
+                    </p>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                    <ValueCard Icon={Target} title="Our Mission" body="To provide businesses of every size with reliable, fast, and cost-efficient logistics solutions — from first-mile pickup to last-mile delivery — ensuring every shipment reaches its destination safely and on time across India and beyond." delay={0.1} />
+                    <ValueCard Icon={Eye} title="Our Vision" body="To become India's most trusted logistics partner by building a seamless pan-India cargo network powered by modern technology, transparent operations, and a relentless focus on delivering value to our clients." delay={0.2} />
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="rounded-[2.5rem] bg-white border border-slate-100 p-8 md:p-12 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden group text-left"
+                >
+                    <div className="absolute top-0 right-0 h-48 w-48 bg-[var(--brand-blue)]/[0.02] rounded-bl-full group-hover:bg-[var(--brand-blue)]/[0.04] transition-colors" />
+
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="h-16 w-16 rounded-2xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] flex items-center justify-center group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all shadow-inner">
+                            <Award className="h-8 w-8" />
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-[var(--brand-navy)]">Our Core Values</h3>
+                            <p className="text-sm text-muted-foreground mt-1">The principles that guide every decision we make</p>
+                        </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[
+                            { label: "Integrity", desc: "We operate with full transparency — no hidden charges, no surprises. Honest communication is the cornerstone of every client relationship." },
+                            { label: "Reliability", desc: "Consistent, on-time performance across every route, every season. Our clients can count on us when it matters most." },
+                            { label: "Customer First", desc: "Every solution we build starts with understanding the client's needs. Your success is our success — we go the extra mile, literally." },
+                            { label: "Speed", desc: "Express logistics without compromise. We move fast while maintaining the safety and security of every consignment." },
+                            { label: "Innovation", desc: "We embrace modern logistics technology — real-time tracking, digital documentation, and smart route optimisation." },
+                            { label: "Excellence", desc: "We hold ourselves to the highest standards in service delivery, fleet maintenance, and customer support across all 41+ branches." },
+                        ].map(({ label, desc }, idx) => (
+                            <motion.div
+                                key={label}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1, type: "spring", stiffness: 100 }}
-                                className="px-5 py-2 rounded-full bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] text-sm font-bold shadow-inner"
+                                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                                className="rounded-2xl bg-slate-50 border border-slate-100 p-5 hover:border-[var(--brand-blue)]/30 hover:bg-blue-50/30 transition-all duration-300"
                             >
-                                {v}
-                            </motion.span>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <CheckCircle2 className="h-4 w-4 text-[var(--brand-blue)] flex-shrink-0" />
+                                    <span className="text-sm font-bold text-[var(--brand-navy)]">{label}</span>
+                                </div>
+                                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                            </motion.div>
                         ))}
                     </div>
                 </motion.div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                    <ValueCard Icon={Target} title="Our Mission" body="A specialized logistics platform designed to support businesses with reliable cargo movement, efficient delivery management, and smooth supply chain operations." delay={0.1} />
-                    <ValueCard Icon={Eye} title="Our Vision" body="To build the operating system for cargo in India through infrastructure, logistics operations of the highest quality, and modern technology capabilities." delay={0.2} />
-                </div>
             </section>
 
             <section
@@ -598,6 +605,11 @@ export default function About() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
+                        <img
+                            src={dbsLogo}
+                            alt="DBS Express Cargo Logo"
+                            className="h-16 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-2 rounded-xl shadow-lg border border-white/20"
+                        />
                         <div className="text-xs uppercase tracking-[0.3em] text-primary-foreground/60 font-bold mb-3">Professional Logistics</div>
                         <h2 className="font-serif text-3xl md:text-5xl leading-tight font-bold tracking-tight">
                             Driving growth & efficiency through professional, tailored solutions.

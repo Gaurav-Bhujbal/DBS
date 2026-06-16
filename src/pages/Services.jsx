@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Truck, Plane, Warehouse, Zap, Recycle, Lightbulb, Leaf, Cpu, ShieldCheck } from "lucide-react";
+import { ArrowRight, Truck, Plane, Warehouse, Zap, Recycle, Lightbulb, Leaf, Cpu, ShieldCheck, Network, CheckCircle2 } from "lucide-react";
 import { TopBar, Nav, Footer } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
+import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import servicesHero from "@/assets/dbs/services-hero.jpg";
 import roadImg from "@/assets/dbs/road.jpg";
 import railImg from "@/assets/dbs/img20.jpg";
@@ -13,19 +14,19 @@ import fastFreight from "@/assets/dbs/img9.jpg";
 import packageImg from "@/assets/dbs/package.jpg";
 
 const FEATURES = [
-    { Icon: Zap, t: "Express Cargo Movement", d: "Fast, time-definite parcel and part-load services ensuring safe and on-time delivery across India." },
-    { Icon: Truck, t: "Full Truck Load (FTL)", d: "Dedicated truckload services for bulk consignments, ensuring direct movement, enhanced safety, and cost efficient delivery." },
-    { Icon: Plane, t: "Freight Forwarding", d: "Integrated road, rail, and air freight forwarding ensuring efficient and reliable cargo movement across India." },
-    { Icon: Warehouse, t: "Warehousing & Storage", d: "Secure and strategically located facilities for long-term or in-transit storage, ensuring product safety and accessibility." },
+    { Icon: Plane, t: "Freight Forwarding", d: "Integrated multi-modal freight forwarding — road, rail, and air — with complete documentation, compliance support, and tracking across every leg of the journey." },
+    { Icon: Warehouse, t: "Warehousing & Distribution", d: "Secure, strategically located facilities with inventory management, pick-and-pack, and distribution services tailored to your supply chain." },
+    { Icon: Truck, t: "Last-Mile Delivery", d: "Dedicated last-mile fleet ensuring reliable doorstep delivery with real-time tracking, proof of delivery, and consistent on-time performance." },
+    { Icon: Network, t: "Supply Chain Solutions", d: "End-to-end supply chain management from procurement logistics to final delivery — reducing costs and improving efficiency at every stage." },
 ];
 
 const SERVICES = [
-    { img: roadImg, t: "Road Transport", d: "Fast and reliable door-to-door road delivery network spanning the entire country." },
-    { img: railImg, t: "Rail Transport", d: "Cost-effective and high-capacity rail logistics solutions for bulk shipments." },
-    { img: airImg, t: "Air Transport", d: "Priority air shipping for your most time-sensitive and high-value cargo." },
-    { img: packaging, t: "Packaging", d: "Professional industrial-grade packaging to keep your goods safe in transit." },
-    { img: homeDelivery, t: "Home Delivery", d: "Last-mile delivery with dedicated fleet ensuring on-time doorstep service." },
-    { img: fastFreight, t: "Fast Freight", d: "Express freight services for urgent shipments with guaranteed timelines." },
+    { img: fastFreight, t: "Freight Forwarding", d: "Integrated road, rail, and air freight forwarding with full documentation, customs compliance, and real-time tracking across every leg of your shipment." },
+    { img: packaging, t: "Warehousing & Distribution", d: "Strategically located, secure warehousing with inventory management, pick-and-pack services, and distribution aligned to your supply chain needs." },
+    { img: roadImg, t: "Road Transportation", d: "Extensive door-to-door road network connecting all major cities and tier-2 destinations across India — safe, reliable, and always on schedule." },
+    { img: railImg, t: "Rail Transportation", d: "High-capacity, cost-effective rail freight for bulk consignments with consistent transit times and careful end-to-end cargo handling." },
+    { img: airImg, t: "Air Cargo Services", d: "Priority air freight for time-critical and high-value shipments, with express booking, customs clearance support, and next-day delivery options." },
+    { img: homeDelivery, t: "Last-Mile Delivery", d: "Dedicated last-mile fleet ensuring reliable doorstep delivery with real-time tracking and verified proof of delivery to any location." },
 ];
 
 function ScrollReveal({ children }) {
@@ -64,38 +65,32 @@ export default function Services() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-2xl"
                     >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                            className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-semibold text-white mb-8 shadow-lg shadow-black/10"
-                        >
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-accent)] opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--brand-accent)]"></span>
-                            </span>
-                            Our Services
-                        </motion.div>
+
+                        <img
+                            src={dbsLogo}
+                            alt="DBS Express Cargo Logo"
+                            className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
+                        />
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
-                            {"We Excel In ".split("").map((char, i) => (
+                            {"End-to-End ".split("").map((char, i) => (
                                 <motion.span key={`s1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>
                                     {char}
                                 </motion.span>
                             ))}
                             <br />
-                            {"Delivery".split("").map((char, i) => (
+                            {"Logistics Solutions".split("").map((char, i) => (
                                 <motion.span
                                     key={`s2-${i}`}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.4 + 12 * 0.04 + i * 0.04 }}
+                                    transition={{ delay: 0.4 + 11 * 0.04 + i * 0.04 }}
                                     className="bg-gradient-to-r from-[var(--brand-accent)] via-amber-300 to-[var(--brand-accent)] bg-clip-text text-transparent"
                                 >
                                     {char}
                                 </motion.span>
                             ))}
-                            {" Services".split("").map((char, i) => (
-                                <motion.span key={`s3-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + 20 * 0.04 + i * 0.04 }}>
+                            {" for Businesses".split("").map((char, i) => (
+                                <motion.span key={`s3-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + 30 * 0.04 + i * 0.04 }}>
                                     {char}
                                 </motion.span>
                             ))}
@@ -111,6 +106,11 @@ export default function Services() {
                 <section className="bg-white py-24">
                     <div className="mx-auto max-w-7xl px-6">
                         <div className="text-center max-w-3xl mx-auto mb-16">
+                            <img
+                                src={dbsLogo}
+                                alt="DBS Express Cargo Logo"
+                                className="mx-auto h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                            />
                             <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Why DBS Express</div>
                             <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] mb-6">Core Capabilities</h2>
                             <p className="text-lg text-muted-foreground">End-to-end logistics solutions built for speed, transparency, and reliability.</p>
@@ -181,6 +181,41 @@ export default function Services() {
                                 </motion.article>
                             ))}
                         </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ delay: 0.3, duration: 0.5 }}
+                            className="mt-8 group rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 hover:border-[var(--brand-blue)]/30 transition-all duration-300"
+                        >
+                            <div className="flex flex-col lg:flex-row">
+                                <div className="relative h-64 lg:h-auto lg:w-96 flex-shrink-0 overflow-hidden">
+                                    <img src={packageImg} alt="Supply Chain Solutions" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                                    <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#040b1c]/80 via-[#040b1c]/30 to-transparent" />
+                                </div>
+                                <div className="flex-1 p-8 lg:p-12 text-left">
+                                    <span className="inline-block px-4 py-1.5 rounded-full bg-[var(--brand-accent)]/20 text-[var(--brand-accent)] text-xs font-bold uppercase tracking-widest mb-5">
+                                        End-to-End
+                                    </span>
+                                    <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-[var(--brand-accent)] transition-colors">Supply Chain Solutions</h3>
+                                    <p className="text-white/60 leading-relaxed text-base mb-8 max-w-2xl">
+                                        Comprehensive supply chain management — from procurement logistics and inventory control to distribution and final delivery. We help businesses reduce costs, eliminate delays, and maintain full visibility at every stage of the supply chain.
+                                    </p>
+                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+                                        {["Procurement Logistics", "Inventory Management", "Distribution Planning", "Route Optimisation", "Real-Time Visibility", "Cost Reduction"].map((point) => (
+                                            <div key={point} className="flex items-center gap-2 text-sm text-white/80 font-medium">
+                                                <CheckCircle2 className="h-4 w-4 text-[var(--brand-accent)] flex-shrink-0" />
+                                                {point}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <a href="#" className="inline-flex items-center gap-2 text-[var(--brand-accent)] font-bold group/link">
+                                        Learn More <ArrowRight className="h-5 w-5 transition-transform group-hover/link:translate-x-2" />
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
             </ScrollReveal>
@@ -241,9 +276,9 @@ export default function Services() {
                                     >
                                         Contact Us <ArrowRight className="h-5 w-5" />
                                     </Link>
-                                    <a href="#" className="rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-sm px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-white transition hover:bg-white/20 hover:border-white/50">
+                                    <Link to="/quote" className="rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-sm px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-white transition hover:bg-white/20 hover:border-white/50">
                                         Schedule a Pickup
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

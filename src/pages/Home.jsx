@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
     MapPin,
     ChevronLeft,
@@ -15,9 +16,22 @@ import {
     Star,
     HeartHandshake,
     Map as MapIcon,
+    Target,
+    Eye,
+    Gem,
 } from "lucide-react";
 import { TopBar, Nav, Footer } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
+import dbsLogo from "@/assets/dbs/DBSLogo.png";
+import clientLG from "@/assets/dbs/clients/lg_logo.png";
+import clientWeikfield from "@/assets/dbs/clients/weikfield-1-150x54.png";
+import clientRehau from "@/assets/dbs/clients/Rehau-Logo-700x394.png";
+import clientUnoMinda from "@/assets/dbs/clients/uno-minda-logo-png_seeklogo-655066.png";
+import clientMaruti from "@/assets/dbs/clients/maruti.png";
+import clientDomo from "@/assets/dbs/clients/Domo_logo.svg.png";
+import clientAmAuto from "@/assets/dbs/clients/am_auto.jpg";
+import clientHero from "@/assets/dbs/clients/hero.jpg";
+import clientEaton from "@/assets/dbs/clients/eaton-logo-png_seeklogo-45191.png";
 import heroTruck from "@/assets/dbs/hero-truck.jpg";
 import heroWorker from "@/assets/dbs/hero-worker.jpg";
 import heroTrain from "@/assets/dbs/hero-train.jpg";
@@ -82,6 +96,10 @@ export default function Home() {
             <ScrollReveal>
                 <CompanyIntro />
             </ScrollReveal>
+            <Clients />
+            <ScrollReveal>
+                <MissionVision />
+            </ScrollReveal>
             <ScrollReveal>
                 <ManageLogistics />
             </ScrollReveal>
@@ -92,13 +110,13 @@ export default function Home() {
                 <TrustStats />
             </ScrollReveal>
             <ScrollReveal>
+                <WhyChooseUs />
+            </ScrollReveal>
+            <ScrollReveal>
                 <Calculator />
             </ScrollReveal>
             <ScrollReveal>
                 <MovesBanner />
-            </ScrollReveal>
-            <ScrollReveal>
-                <WhyChooseUs />
             </ScrollReveal>
             <ScrollReveal>
                 <SpecialCards />
@@ -122,7 +140,7 @@ const heroHeadings = [
     { line1: "Delivering ", highlight: "Excellence", line2: "Across Every Mile" },
     { line1: "Smart Logistics ", highlight: "Solutions", line2: "for Businesses" },
     { line1: "Contact Our Team for ", highlight: "Seamless", line2: "Support" },
-    { line1: "We Excel In ", highlight: "Delivery", line2: "Services" },
+    { line1: "End-to-End ", highlight: "Logistics Solutions", line2: " for Businesses Across India" },
 ];
 
 function TypewriterLine({ text, className, baseDelay }) {
@@ -175,19 +193,13 @@ function Hero() {
 
             <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 sm:py-20 text-center">
                 <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: "easeOut" }}>
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.85 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                        className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 text-sm font-bold text-white mb-6 shadow-lg"
-                    >
-                        <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-accent)] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--brand-accent)]"></span>
-                        </span>
-                        India&#39;s Trusted Logistics Partner
-                    </motion.div>
 
+
+                    <img
+                        src={dbsLogo}
+                        alt="DBS Express Cargo Logo"
+                        className="mx-auto h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
+                    />
                     <motion.h1
                         key={headingIndex}
                         initial={{ opacity: 0 }}
@@ -227,14 +239,18 @@ function Hero() {
                         transition={{ delay: 0.8, duration: 0.6 }}
                         className="mt-10 flex flex-wrap justify-center gap-4"
                     >
-                        <motion.a
+                        <motion.div
                             whileHover={{ scale: 1.06, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            href="#quote"
-                            className="rounded-full bg-[var(--brand-accent)] text-white px-10 py-4 text-base font-bold shadow-xl shadow-orange-500/30 transition-all"
+                            className="inline-block"
                         >
-                            Get a Quote
-                        </motion.a>
+                            <Link
+                                to="/quote"
+                                className="inline-block rounded-full bg-[var(--brand-accent)] text-white px-10 py-4 text-base font-bold shadow-xl shadow-orange-500/30 transition-all"
+                            >
+                                Get a Quote
+                            </Link>
+                        </motion.div>
                         <motion.button
                             whileHover={{ scale: 1.06, y: -2 }}
                             whileTap={{ scale: 0.95 }}
@@ -293,16 +309,184 @@ function Hero() {
     );
 }
 
+const VALUES = [
+    { Icon: ShieldCheck, label: "Reliability", desc: "We keep our promises — every shipment, every time, without exception." },
+    { Icon: Zap, label: "Speed", desc: "Optimised routes and real-time control towers to get your cargo there faster." },
+    { Icon: Users, label: "Customer First", desc: "Every decision starts with what's best for our clients and their business." },
+    { Icon: TrendingUp, label: "Innovation", desc: "Technology-driven solutions that bring transparency to modern logistics." },
+];
+
+function MissionVision() {
+    return (
+        <section className="relative bg-gradient-to-b from-[#040b1c] via-[#030715] to-[#01030a] text-white py-16 sm:py-24 overflow-hidden">
+            <div className="absolute inset-0 opacity-20 pointer-events-none"
+                style={{ backgroundImage: "radial-gradient(circle at 15% 50%, rgba(59,130,246,0.35), transparent 45%), radial-gradient(circle at 85% 20%, rgba(236,181,64,0.25), transparent 40%)" }}
+            />
+            <div className="mx-auto max-w-7xl px-6 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-14">
+                    <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Who We Are</div>
+                    <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">Mission, Vision & Values</h2>
+                    <p className="text-lg text-white/70">
+                        Built on three decades of trust, we move cargo with purpose — guided by clear values and a commitment to India's logistics future.
+                    </p>
+                </div>
+
+                {/* Mission & Vision */}
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    {[
+                        {
+                            Icon: Target,
+                            label: "Our Mission",
+                            accent: "var(--brand-accent)",
+                            body: "To deliver every shipment safely, swiftly, and smartly — connecting businesses across India through reliable multi-modal logistics powered by technology and a people-first culture.",
+                        },
+                        {
+                            Icon: Eye,
+                            label: "Our Vision",
+                            accent: "var(--brand-blue)",
+                            body: "To be India's most trusted, technology-driven logistics partner — building the infrastructure that powers the next generation of Indian commerce and manufacturing.",
+                        },
+                    ].map(({ Icon, label, accent, body }) => (
+                        <motion.div
+                            key={label}
+                            whileHover={{ y: -6 }}
+                            transition={{ duration: 0.3 }}
+                            className="rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm p-8 sm:p-10 hover:border-white/20 hover:bg-white/8 transition-all"
+                        >
+                            <div className="h-14 w-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `color-mix(in srgb, ${accent} 20%, transparent)`, border: `1px solid color-mix(in srgb, ${accent} 30%, transparent)` }}>
+                                <Icon className="h-7 w-7" style={{ color: accent }} />
+                            </div>
+                            <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: accent }}>{label}</div>
+                            <p className="text-white/80 text-lg leading-relaxed">{body}</p>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Values */}
+                <div className="rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm p-8 sm:p-10">
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="h-14 w-14 rounded-2xl bg-[var(--brand-blue)]/20 border border-[var(--brand-blue)]/30 flex items-center justify-center">
+                            <Gem className="h-7 w-7 text-[var(--brand-blue)]" />
+                        </div>
+                        <div>
+                            <div className="text-xs font-bold uppercase tracking-widest text-[var(--brand-blue)] mb-1">Our Values</div>
+                            <div className="text-white font-serif text-2xl">The principles we live by</div>
+                        </div>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {VALUES.map(({ Icon, label, desc }, i) => (
+                            <motion.div
+                                key={label}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1, duration: 0.4 }}
+                                whileHover={{ y: -4 }}
+                                className="group rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-[var(--brand-blue)]/40 hover:bg-[var(--brand-blue)]/10 transition-all"
+                            >
+                                <Icon className="h-6 w-6 text-[var(--brand-accent)] mb-4" />
+                                <div className="font-bold text-white mb-2">{label}</div>
+                                <p className="text-sm text-white/60 leading-relaxed">{desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+const CLIENT_ROW_1 = [
+    { name: "LG Electronics", abbr: "LG", logo: clientLG },
+    { name: "WeikField", abbr: "WF", logo: clientWeikfield },
+    { name: "REHAU", abbr: "RH", logo: clientRehau },
+    { name: "Uno Minda", abbr: "UM", logo: clientUnoMinda },
+    { name: "Maruti Suzuki", abbr: "MS", logo: clientMaruti },
+    { name: "DOMO", abbr: "DO", logo: clientDomo },
+];
+
+const CLIENT_ROW_2 = [
+    { name: "AM Auto", abbr: "AA", logo: clientAmAuto },
+    { name: "Hero MotoCorp", abbr: "HM", logo: clientHero },
+    { name: "Eaton", abbr: "EA", logo: clientEaton },
+    { name: "LG Electronics", abbr: "LG", logo: clientLG },
+    { name: "Maruti Suzuki", abbr: "MS", logo: clientMaruti },
+    { name: "REHAU", abbr: "RH", logo: clientRehau },
+];
+
+function MarqueeRow({ clients, reverse = false }) {
+    const doubled = [...clients, ...clients];
+    return (
+        <div className="overflow-hidden">
+            <div
+                className="flex gap-4 w-max"
+                style={{
+                    animation: `marquee${reverse ? "Reverse" : ""} 30s linear infinite`,
+                }}
+            >
+                {doubled.map((c, i) => (
+                    <div
+                        key={i}
+                        className="flex items-center gap-3 bg-white border border-slate-100 rounded-2xl px-5 py-3.5 shadow-sm hover:shadow-md hover:border-[var(--brand-blue)]/30 transition-all flex-shrink-0 group"
+                    >
+                        {c.logo ? (
+                            <img
+                                src={c.logo}
+                                alt={c.name}
+                                className="h-9 w-auto max-w-[72px] object-contain"
+                            />
+                        ) : (
+                            <div className="h-9 w-9 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] flex items-center justify-center text-xs font-black group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all">
+                                {c.abbr}
+                            </div>
+                        )}
+                        <span className="text-sm font-semibold text-[var(--brand-navy)] whitespace-nowrap">{c.name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function Clients() {
+    return (
+        <section className="bg-slate-50 py-16 sm:py-20 overflow-hidden">
+            <style>{`
+                @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+                @keyframes marqueeReverse { from { transform: translateX(-50%) } to { transform: translateX(0) } }
+            `}</style>
+            <div className="mx-auto max-w-7xl px-6 mb-10 text-center">
+                <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Our Clients</div>
+                <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] mb-6">
+                    Trusted by Industry Leaders
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                    From manufacturing giants to fast-growing enterprises — leading businesses across India rely on DBS Express Cargo for their logistics.
+                </p>
+            </div>
+            <div className="space-y-4">
+                <MarqueeRow clients={CLIENT_ROW_1} />
+                <MarqueeRow clients={CLIENT_ROW_2} reverse />
+            </div>
+        </section>
+    );
+}
+
 function CompanyIntro() {
     return (
         <section className="bg-slate-50 py-12 sm:py-24 relative overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
                     <div className="lg:w-1/2">
+                        <img
+                            src={dbsLogo}
+                            alt="DBS Express Cargo Logo"
+                            className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                        />
                         <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">About Our Company</div>
                         <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] leading-tight mb-8">
-                            The Best Transportation <br />
-                            Company In Our State
+                            Trusted Logistics Solutions <br />
+                            Across India
                         </h2>
                         <p className="text-lg text-muted-foreground leading-relaxed mb-10">
                             Reliable logistics solutions that move your shipments safely, swiftly, and smartly across locations. We ensure timely pickup and delivery with complete shipment safety, so your cargo reaches its destination without delays or damage.
@@ -349,95 +533,63 @@ function CompanyIntro() {
 }
 
 function ManageLogistics() {
-    const modes = [
+    const topModes = [
         { n: "01", img: roadImg, t: "Road Transport", desc: "Fast and reliable door-to-door road delivery across India." },
         { n: "02", img: railImg, t: "Rail Transport", desc: "Cost-effective and high-capacity rail logistics solutions." },
         { n: "03", img: airImg, t: "Air Transport", desc: "Priority air shipping for your most time-sensitive cargo." },
+    ];
+    const bottomModes = [
         { n: "04", img: heroWorker, t: "Warehousing", desc: "Secure storage with tech-enabled inventory and picking support." },
         { n: "05", img: calcTruck, t: "Last-Mile Delivery", desc: "Dedicated fleets for seamless, on-time city deliveries." },
     ];
-    const [visibleCount, setVisibleCount] = useState(3);
-    const maxIndex = Math.max(0, modes.length - visibleCount);
-    const [startIndex, setStartIndex] = useState(0);
 
-    useEffect(() => {
-        const updateCount = () => {
-            if (window.innerWidth < 640) setVisibleCount(1);
-            else if (window.innerWidth < 1024) setVisibleCount(2);
-            else setVisibleCount(3);
-        };
-        updateCount();
-        window.addEventListener("resize", updateCount);
-        return () => window.removeEventListener("resize", updateCount);
-    }, []);
-
-    useEffect(() => {
-        setStartIndex((i) => Math.min(i, maxIndex));
-    }, [maxIndex]);
-
-    const handlePrev = () => setStartIndex((i) => Math.max(0, i - 1));
-    const handleNext = () => setStartIndex((i) => Math.min(maxIndex, i + 1));
+    const Card = ({ m }) => (
+        <motion.article
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="group relative rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 p-4 transition-all hover:shadow-2xl hover:shadow-slate-200/50"
+        >
+            <div className="relative h-64 overflow-hidden rounded-[2rem] mb-8">
+                <img src={m.img} alt={m.t} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-2xl text-xl font-black text-[var(--brand-blue)] shadow-sm">
+                    {m.n}
+                </div>
+            </div>
+            <div className="px-4 pb-4">
+                <h3 className="text-2xl font-bold text-[var(--brand-navy)] mb-3 group-hover:text-[var(--brand-blue)] transition-colors">{m.t}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">{m.desc}</p>
+                <a href="#" className="inline-flex items-center gap-2 text-[var(--brand-blue)] font-bold group/link">
+                    Learn More
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover/link:translate-x-2" />
+                </a>
+            </div>
+        </motion.article>
+    );
 
     return (
         <section className="bg-white py-24">
             <div className="mx-auto max-w-7xl px-6">
-                <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-6">
-                    <div className="max-w-2xl">
-                        <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Our Core Services</div>
-                        <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] leading-tight">
-                            Integrated Logistics Solutions <br />
-                            For Your Business
-                        </h2>
-                    </div>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={handlePrev}
-                            disabled={startIndex === 0}
-                            className="h-14 w-14 rounded-full border border-slate-200 bg-white/80 text-[var(--brand-blue)] shadow-sm backdrop-blur flex items-center justify-center transition-all duration-300 hover:bg-[var(--brand-blue)] hover:text-white hover:border-[var(--brand-blue)] disabled:opacity-40"
-                            aria-label="Previous"
-                        >
-                            <ChevronLeft />
-                        </button>
-                        <button
-                            onClick={handleNext}
-                            disabled={startIndex === maxIndex}
-                            className="h-14 w-14 rounded-full border border-slate-200 bg-white/80 text-[var(--brand-blue)] shadow-sm backdrop-blur flex items-center justify-center transition-all duration-300 hover:bg-[var(--brand-blue)] hover:text-white hover:border-[var(--brand-blue)] disabled:opacity-40"
-                            aria-label="Next"
-                        >
-                            <ChevronRight />
-                        </button>
-                    </div>
+                <div className="max-w-2xl mb-16">
+                    <img
+                        src={dbsLogo}
+                        alt="DBS Express Cargo Logo"
+                        className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                    />
+                    <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Our Core Services</div>
+                    <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] leading-tight">
+                        Integrated Logistics Solutions <br />
+                        For Your Business
+                    </h2>
                 </div>
-                <div className="overflow-hidden">
-                    <div
-                        className="flex transition-transform duration-500 ease-in-out"
-                        style={{ transform: `translateX(-${startIndex * (100 / visibleCount)}%)` }}
-                    >
-                        {modes.map((m) => (
-                            <div key={m.n} style={{ width: `${100 / visibleCount}%` }} className="flex-shrink-0 px-4">
-                                <motion.article
-                                    whileHover={{ y: -8, scale: 1.02 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="group relative rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 p-4 transition-all hover:shadow-2xl hover:shadow-slate-200/50"
-                                >
-                                    <div className="relative h-64 overflow-hidden rounded-[2rem] mb-8">
-                                        <img src={m.img} alt={m.t} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-2xl text-xl font-black text-[var(--brand-blue)] shadow-sm">
-                                            {m.n}
-                                        </div>
-                                    </div>
-                                    <div className="px-4 pb-4">
-                                        <h3 className="text-2xl font-bold text-[var(--brand-navy)] mb-3 group-hover:text-[var(--brand-blue)] transition-colors">{m.t}</h3>
-                                        <p className="text-muted-foreground leading-relaxed mb-6">{m.desc}</p>
-                                        <a href="#" className="inline-flex items-center gap-2 text-[var(--brand-blue)] font-bold group/link">
-                                            Learn More
-                                            <ArrowRight className="h-5 w-5 transition-transform group-hover/link:translate-x-2" />
-                                        </a>
-                                    </div>
-                                </motion.article>
-                            </div>
-                        ))}
-                    </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {topModes.map((m) => (
+                        <Card key={m.n} m={m} />
+                    ))}
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                    {bottomModes.map((m) => (
+                        <Card key={m.n} m={m} />
+                    ))}
                 </div>
             </div>
         </section>
@@ -631,62 +783,77 @@ function TrustStats() {
     );
 }
 
-function Calculator() {
-    return (
-        <section id="quote" className="bg-slate-50 py-16 sm:py-24">
-            <div className="mx-auto max-w-7xl px-6">
-                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-                    <div className="relative hidden sm:block">
-                        <div className="absolute inset-0 bg-[var(--brand-blue)]/10 rounded-[2rem] sm:rounded-[3rem] -rotate-3" />
-                        <img src={calcTruck} alt="Cargo truck" className="relative z-10 rounded-[2rem] sm:rounded-[3rem] w-full object-cover shadow-2xl shadow-slate-200" />
-                    </div>
-                    <div className="bg-white rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-14 shadow-2xl shadow-slate-200 border border-slate-100">
-                        <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Rate Estimator</div>
-                        <h3 className="font-serif text-3xl md:text-4xl text-[var(--brand-navy)] mb-8">Transport Calculator</h3>
+function WhyChooseUs() {
+    const points = [
+        { Icon: Star, title: "30+ Years of Industry Experience", desc: "Decades of proven expertise in handling complex logistics and delivering excellence." },
+        { Icon: MapIcon, title: "41+ Branches Across India", desc: "A vast network of branches ensuring we are always close to your business operations." },
+        { Icon: Globe, title: "Pan-India Delivery Network", desc: "Seamless connectivity across the country for fast and reliable transportation." },
+        { Icon: Zap, title: "Real-Time Tracking", desc: "Stay updated with precise, real-time visibility of your cargo at every step." },
+        { Icon: ShieldCheck, title: "Reliable & Cost-Effective", desc: "High-quality services optimized to give you the best value for your investment." },
+        { Icon: Headphones, title: "Dedicated Customer Support", desc: "Our support team is available around the clock to assist you with any queries." },
+    ];
 
-                        <div className="space-y-8">
-                            <div>
-                                <label className="text-sm font-bold text-[var(--brand-navy)] mb-2 block">Source / Destination</label>
-                                <input
-                                    className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-[var(--brand-blue)]/20 focus:border-[var(--brand-blue)] transition-all"
-                                    placeholder="Enter city name..."
-                                />
+    return (
+        <section className="bg-white py-24">
+            <div className="mx-auto max-w-7xl px-6">
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Core Advantages</div>
+                    <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--brand-navy)] mb-6 flex items-center justify-center gap-3 flex-wrap">
+                        Why Choose
+                        <img
+                            src={dbsLogo}
+                            alt="DBS Express Cargo Logo"
+                            className="h-12 sm:h-16 md:h-20 w-auto object-contain"
+                        />
+                    </h2>
+                    <p className="text-lg text-muted-foreground">We don&#39;t just move cargo; we move your business forward with precision, safety, and unmatched reliability.</p>
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {points.map((p, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ delay: i * 0.1, duration: 0.5 }}
+                            whileHover={{ y: -8, scale: 1.02 }}
+                            className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
+                        >
+                            <div className="h-14 w-14 rounded-2xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] flex items-center justify-center mb-6 group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all shadow-inner">
+                                <p.Icon className="h-7 w-7" />
                             </div>
-                            <div>
-                                <label className="text-sm font-bold text-[var(--brand-navy)] mb-2 block">Weight (KG)</label>
-                                <input
-                                    className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 outline-none focus:ring-2 focus:ring-[var(--brand-blue)]/20 focus:border-[var(--brand-blue)] transition-all"
-                                    placeholder="e.g. 500"
-                                />
-                            </div>
-                            <div className="grid md:grid-cols-3 gap-6">
-                                <RadioGroup label="Mode" options={["Road", "Rail", "Air"]} name="mode" />
-                                <RadioGroup label="Service" options={["Standard", "Express"]} name="extra" />
-                                <RadioGroup label="Coverage" options={["Basic", "Full"]} name="country" />
-                            </div>
-                            <button className="w-full rounded-2xl bg-[var(--brand-blue)] text-white py-5 text-lg font-bold shadow-xl shadow-[var(--brand-blue)]/20 transition hover:scale-[1.02] active:scale-[0.98]">
-                                Calculate Estimate
-                            </button>
-                        </div>
-                    </div>
+                            <h3 className="text-xl font-bold text-[var(--brand-navy)] mb-4">{p.title}</h3>
+                            <p className="text-muted-foreground leading-relaxed text-sm">{p.desc}</p>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
 
-function RadioGroup({ label, options, name }) {
+function Calculator() {
     return (
-        <div>
-            <div className="font-medium mb-2">{label}</div>
-            <div className="space-y-2">
-                {options.map((o) => (
-                    <label key={o} className="flex items-center gap-2 text-muted-foreground cursor-pointer">
-                        <input type="radio" name={name} className="accent-[var(--brand-blue)]" /> {o}
-                    </label>
-                ))}
+        <section className="bg-slate-50 py-16 sm:py-24">
+            <div className="mx-auto max-w-7xl px-6 text-center">
+                <div className="max-w-2xl mx-auto bg-white rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-16 shadow-xl border border-slate-100">
+                    <div className="h-20 w-20 mx-auto rounded-[1.5rem] bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] flex items-center justify-center mb-8">
+                        <Target className="h-10 w-10" />
+                    </div>
+                    <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Rate Estimator</div>
+                    <h3 className="font-serif text-3xl md:text-4xl text-[var(--brand-navy)] mb-6">Need a Logistics Estimate?</h3>
+                    <p className="text-lg text-muted-foreground mb-10">
+                        Use our dedicated transport calculator to quickly estimate costs for your specific road, rail, or air logistics requirements.
+                    </p>
+                    <Link
+                        to="/quote"
+                        className="inline-flex items-center gap-2 rounded-2xl bg-[var(--brand-blue)] text-white px-8 py-4 text-lg font-bold shadow-xl shadow-[var(--brand-blue)]/20 transition hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                        Get a Quote <ArrowRight className="h-5 w-5" />
+                    </Link>
+                </div>
             </div>
-        </div>
+        </section>
     );
 }
 
@@ -718,7 +885,9 @@ function MovesBanner() {
                                 whileTap={{ scale: 0.95 }}
                                 className="bg-[var(--brand-blue)] text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-[var(--brand-blue)]/20 transition-all hover:opacity-95"
                             >
-                                Book Shipment
+                                <Link to="/quote">
+                                    Book Shipment
+                                </Link>
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
@@ -763,64 +932,7 @@ function MovesBanner() {
     );
 }
 
-function WhyChooseUs() {
-    const items = [
-        { Icon: Globe, t: "Global Network", d: "Connecting your business to every corner of the country." },
-        { Icon: Users, t: "Expert Team", d: "30+ years of professional logistics expertise at your service." },
-        { Icon: Headphones, t: "24/7 Support", d: "Always available to track and manage your shipments." },
-        { Icon: ShieldCheck, t: "Safety First", d: "100% secure handling with comprehensive insurance options." },
-    ];
-    return (
-        <section className="bg-white py-16 sm:py-24 relative overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
-                    <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Core Advantages</div>
-                    <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--brand-navy)] mb-6">Why Industry Leaders Choose DBS</h2>
-                    <p className="text-base sm:text-lg text-muted-foreground">We don&#39;t just move cargo; we move your business forward with precision, safety, and unmatched reliability.</p>
-                </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
-                    <div className="space-y-8 sm:space-y-10">
-                        {items.slice(0, 2).map((it) => (
-                            <div key={it.t} className="flex gap-4 sm:gap-6 group">
-                                <div className="flex-shrink-0 h-14 w-14 sm:h-16 sm:w-16 rounded-[1.5rem] bg-slate-50 border border-slate-100 text-[var(--brand-blue)] flex items-center justify-center group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all duration-300">
-                                    <it.Icon className="h-7 w-7 sm:h-8 sm:w-8" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[var(--brand-navy)] mb-2">{it.t}</h3>
-                                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{it.d}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="relative hidden sm:block sm:col-span-2 lg:col-span-1 order-first lg:order-none">
-                        <div className="absolute inset-0 bg-[var(--brand-blue)]/20 rounded-full blur-[100px] animate-pulse" />
-                        <img
-                            src={whyTruck}
-                            alt="Logistics excellence"
-                            className="relative z-10 rounded-[2rem] sm:rounded-[3rem] shadow-2xl w-full object-cover h-[280px] sm:h-[350px] lg:h-[500px]"
-                        />
-                    </div>
-
-                    <div className="space-y-8 sm:space-y-10">
-                        {items.slice(2).map((it) => (
-                            <div key={it.t} className="flex lg:flex-row-reverse gap-4 sm:gap-6 group lg:text-right">
-                                <div className="flex-shrink-0 h-14 w-14 sm:h-16 sm:w-16 rounded-[1.5rem] bg-slate-50 border border-slate-100 text-[var(--brand-blue)] flex items-center justify-center group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all duration-300">
-                                    <it.Icon className="h-7 w-7 sm:h-8 sm:w-8" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[var(--brand-navy)] mb-2">{it.t}</h3>
-                                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{it.d}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
 
 function Feature({ Icon, t }) {
     return (

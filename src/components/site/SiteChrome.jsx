@@ -20,9 +20,9 @@ const NAV = [
     { label: "Services", to: "/services" },
     { label: "About Us", to: "/about" },
     { label: "Contact Us", to: "/contact" },
-    { label: "Network" },
-    { label: "Tracking" },
-    { label: "Trace LR" },
+    { label: "Network", to: "/network" },
+    { label: "Get a Quote", to: "/quote" },
+
 ];
 
 export function TopBar() {
@@ -30,9 +30,9 @@ export function TopBar() {
         <div className="hidden md:block bg-[var(--brand-navy)] text-white/90">
             <div className="mx-auto max-w-7xl px-6 py-2.5 flex items-center justify-between text-[13px] font-medium">
                 <div className="flex items-center gap-6">
-                    <a href="tel:+919527931493" className="flex items-center gap-2 hover:text-white transition-colors">
+                    <a href="tel:+919527931492" className="flex items-center gap-2 hover:text-white transition-colors">
                         <Phone className="h-4 w-4 text-[var(--brand-accent)]" />
-                        <span>+91 9527931493</span>
+                        <span>+91 9527931492</span>
                     </a>
                     <div className="h-3 w-px bg-white/20" />
                     <a href="mailto:pune@dbsexpresscargo.com" className="flex items-center gap-2 hover:text-white transition-colors">
@@ -43,7 +43,7 @@ export function TopBar() {
                 <div className="flex items-center gap-6">
                     <span className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 text-[var(--brand-accent)]" />
-                        <span>D. C. Chambers, Pimpri, Pune</span>
+                        <span>DBS Express Cargo, Futuready trade tower, Pimpri-Chinchwad, Maharashtra 411018</span>
                     </span>
                     <div className="h-3 w-px bg-white/20" />
                     <div className="flex items-center gap-3">
@@ -95,7 +95,7 @@ export function Nav() {
                             <img
                                 src={logo}
                                 alt="DBS Express Cargo"
-                                style={{ height: isCompact ? 28 : 36 }}
+                                style={{ height: isCompact ? 28 : 36, transform: "scale(1.9)", transformOrigin: "left center" }}
                                 className="w-auto object-contain transition-all duration-300"
                             />
                         </Link>
@@ -283,7 +283,7 @@ export function Footer() {
                             </div>
                             <div>
                                 <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Customer Support</div>
-                                <div className="font-bold">+91 9527931493</div>
+                                <div className="font-bold">+91 9527931492</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -307,7 +307,7 @@ export function Footer() {
 }
 
 export function WhatsAppFab() {
-    const phone = "919527931493";
+    const phone = "919527931492";
     const message = encodeURIComponent(
         "Hi DBS Express Cargo, I would like to enquire about your logistics services.",
     );

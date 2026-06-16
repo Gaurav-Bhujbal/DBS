@@ -2,8 +2,8 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, Globe, Send, MessageSquare, Activity, Check, ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
+import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import contactHero from "@/assets/dbs/contact-hero.jpg";
-import mapPin from "@/assets/dbs/map-pin.jpg";
 
 export default function Contact() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -26,14 +26,12 @@ export default function Contact() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-3xl text-left"
                     >
-                        <motion.span
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-[var(--brand-accent)] mb-6 shadow-lg shadow-black/10"
-                        >
-                            <MessageSquare className="h-3.5 w-3.5" /> 24/7 Operations Control
-                        </motion.span>
+
+                        <img
+                            src={dbsLogo}
+                            alt="DBS Express Cargo Logo"
+                            className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
+                        />
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
                             {"Contact Our Team for ".split("").map((char, i) => (
                                 <motion.span key={`c1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>
@@ -80,6 +78,11 @@ export default function Contact() {
 
                     <div className="relative z-10">
                         <div className="flex items-center">
+                            <img
+                                src={dbsLogo}
+                                alt="DBS Express Cargo Logo"
+                                className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
+                            />
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/80 border border-blue-100/50 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[var(--brand-blue)] mb-4 shadow-sm shadow-blue-500/5">
                                 <Activity className="h-3.5 w-3.5 animate-pulse text-[var(--brand-blue)]" /> Get in touch
                             </div>
@@ -91,6 +94,10 @@ export default function Contact() {
                             className="mt-8 space-y-6"
                             onSubmit={(e) => {
                                 e.preventDefault();
+                                const fd = new FormData(e.target);
+                                const text = `*New Contact Request*\n\n*Name:* ${fd.get("firstName")} ${fd.get("lastName")}\n*Phone:* ${fd.get("phone")}\n*Email:* ${fd.get("email")}\n\n*Message:*\n${fd.get("message")}`;
+                                const waUrl = `https://wa.me/919527931492?text=${encodeURIComponent(text)}`;
+                                window.open(waUrl, "_blank");
                                 setIsSubmitted(true);
                             }}
                         >
@@ -109,16 +116,17 @@ export default function Contact() {
                             ) : (
                                 <>
                                     <div className="grid sm:grid-cols-2 gap-5">
-                                        <Field label="First Name" placeholder="John" />
-                                        <Field label="Last Name" placeholder="Doe" />
+                                        <Field label="First Name" placeholder="John" name="firstName" />
+                                        <Field label="Last Name" placeholder="Doe" name="lastName" />
                                     </div>
                                     <div className="grid sm:grid-cols-2 gap-5">
-                                        <Field label="Phone Number" placeholder="+91 00000 00000" type="tel" />
-                                        <Field label="Email Address" placeholder="you@example.com" type="email" />
+                                        <Field label="Phone Number" placeholder="+91 00000 00000" type="tel" name="phone" />
+                                        <Field label="Email Address" placeholder="you@example.com" type="email" name="email" />
                                     </div>
                                     <div className="text-left">
                                         <label className="text-sm font-semibold text-[var(--brand-navy)]">Message</label>
                                         <textarea
+                                            name="message"
                                             rows={5}
                                             placeholder="Tell us about your shipment details or partnership enquiries..."
                                             className="mt-2 w-full rounded-xl border border-slate-100 bg-white px-4 py-3.5 text-sm outline-none focus:border-[var(--brand-blue)] focus:ring-2 focus:ring-[var(--brand-blue)]/10 transition-all resize-none shadow-sm"
@@ -178,18 +186,14 @@ export default function Contact() {
                         className="rounded-[3rem] overflow-hidden border border-slate-200/50 bg-slate-900/5 p-2 shadow-2xl relative group"
                     >
                         <div className="relative rounded-2xl overflow-hidden">
-                            <img src={mapPin} alt="Map of our Pimpri, Pune location" className="w-full h-80 object-cover" loading="lazy" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-
-                            <div className="absolute top-[48%] left-[49%] -translate-x-1/2 -translate-y-1/2 z-20 group/beacon">
-                                <div className="relative flex h-6 w-6 items-center justify-center">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-blue)] opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[var(--brand-blue)] border border-white shadow"></span>
-                                </div>
-                                <span className="absolute left-1/2 -translate-x-1/2 bottom-7 scale-0 group-hover/beacon:scale-100 transition-all rounded bg-slate-950 px-2 py-1 text-[9px] font-bold text-white shadow-md uppercase tracking-wider whitespace-nowrap">
-                                    DBS Head Office
-                                </span>
-                            </div>
+                            <iframe
+                                title="DBS Express Cargo Location"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60490.179128262!2d73.77129860445447!3d18.635426214800972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b84400000001%3A0xa7fcd60f14c5ec6f!2sDBS%20Express%20Cargo!5e0!3m2!1sen!2sin!4v1781603053541!5m2!1sen!2sin"
+                                className="w-full h-80 border-0"
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="no-referrer-when-downgrade"
+                            />
                         </div>
 
                         <div className="p-5 flex items-center justify-between text-left">
@@ -213,12 +217,13 @@ export default function Contact() {
     );
 }
 
-function Field({ label, placeholder, type = "text" }) {
+function Field({ label, placeholder, type = "text", name }) {
     return (
         <div className="text-left">
             <label className="text-sm font-semibold text-[var(--brand-navy)]">{label}</label>
             <input
                 type={type}
+                name={name}
                 placeholder={placeholder}
                 required
                 className="mt-2 w-full rounded-xl border border-slate-100 bg-white px-4 py-3.5 text-sm outline-none focus:border-[var(--brand-blue)] focus:ring-2 focus:ring-[var(--brand-blue)]/10 transition-all shadow-sm"
