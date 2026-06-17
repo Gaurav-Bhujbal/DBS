@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Truck, Plane, Warehouse, Zap, Recycle, Lightbulb, Leaf, Cpu, ShieldCheck, Network, CheckCircle2 } from "lucide-react";
 import { TopBar, Nav, Footer } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
-import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import servicesHero from "@/assets/dbs/services-hero.jpg";
 import roadImg from "@/assets/dbs/road.jpg";
 import railImg from "@/assets/dbs/img20.jpg";
@@ -66,11 +65,6 @@ export default function Services() {
                         className="max-w-2xl"
                     >
 
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
-                        />
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
                             {"End-to-End ".split("").map((char, i) => (
                                 <motion.span key={`s1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>
@@ -106,11 +100,6 @@ export default function Services() {
                 <section className="bg-white py-24">
                     <div className="mx-auto max-w-7xl px-6">
                         <div className="text-center max-w-3xl mx-auto mb-16">
-                            <img
-                                src={dbsLogo}
-                                alt="DBS Express Cargo Logo"
-                                className="mx-auto h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
-                            />
                             <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Why DBS Express</div>
                             <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] mb-6">Core Capabilities</h2>
                             <p className="text-lg text-muted-foreground">End-to-end logistics solutions built for speed, transparency, and reliability.</p>

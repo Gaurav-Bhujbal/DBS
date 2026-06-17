@@ -22,7 +22,6 @@ import {
 } from "lucide-react";
 import { TopBar, Nav, Footer } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
-import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import clientLG from "@/assets/dbs/clients/lg_logo.png";
 import clientWeikfield from "@/assets/dbs/clients/weikfield-1-150x54.png";
 import clientRehau from "@/assets/dbs/clients/Rehau-Logo-700x394.png";
@@ -195,11 +194,6 @@ function Hero() {
                 <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: "easeOut" }}>
 
 
-                    <img
-                        src={dbsLogo}
-                        alt="DBS Express Cargo Logo"
-                        className="mx-auto h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
-                    />
                     <motion.h1
                         key={headingIndex}
                         initial={{ opacity: 0 }}
@@ -478,11 +472,6 @@ function CompanyIntro() {
             <div className="mx-auto max-w-7xl px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
                     <div className="lg:w-1/2">
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
-                        />
                         <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">About Our Company</div>
                         <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] leading-tight mb-8">
                             Trusted Logistics Solutions <br />
@@ -570,11 +559,6 @@ function ManageLogistics() {
         <section className="bg-white py-24">
             <div className="mx-auto max-w-7xl px-6">
                 <div className="max-w-2xl mb-16">
-                    <img
-                        src={dbsLogo}
-                        alt="DBS Express Cargo Logo"
-                        className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
-                    />
                     <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Our Core Services</div>
                     <h2 className="font-serif text-4xl md:text-5xl text-[var(--brand-navy)] leading-tight">
                         Integrated Logistics Solutions <br />
@@ -798,13 +782,8 @@ function WhyChooseUs() {
             <div className="mx-auto max-w-7xl px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Core Advantages</div>
-                    <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--brand-navy)] mb-6 flex items-center justify-center gap-3 flex-wrap">
-                        Why Choose
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-12 sm:h-16 md:h-20 w-auto object-contain"
-                        />
+                    <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--brand-navy)] mb-6">
+                        Why Choose DBS Express Cargo
                     </h2>
                     <p className="text-lg text-muted-foreground">We don&#39;t just move cargo; we move your business forward with precision, safety, and unmatched reliability.</p>
                 </div>

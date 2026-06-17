@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, Globe, Send, MessageSquare, Activity, Check, ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
-import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import contactHero from "@/assets/dbs/contact-hero.jpg";
 
 export default function Contact() {
@@ -27,11 +26,6 @@ export default function Contact() {
                         className="max-w-3xl text-left"
                     >
 
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
-                        />
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
                             {"Contact Our Team for ".split("").map((char, i) => (
                                 <motion.span key={`c1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>
@@ -77,13 +71,8 @@ export default function Contact() {
                     <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[var(--brand-blue)]/5 blur-3xl group-hover:bg-[var(--brand-blue)]/10 transition-colors duration-500 pointer-events-none" />
 
                     <div className="relative z-10">
-                        <div className="flex items-center">
-                            <img
-                                src={dbsLogo}
-                                alt="DBS Express Cargo Logo"
-                                className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
-                            />
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/80 border border-blue-100/50 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[var(--brand-blue)] mb-4 shadow-sm shadow-blue-500/5">
+                        <div className="flex items-center mb-4">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/80 border border-blue-100/50 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[var(--brand-blue)] shadow-sm shadow-blue-500/5">
                                 <Activity className="h-3.5 w-3.5 animate-pulse text-[var(--brand-blue)]" /> Get in touch
                             </div>
                         </div>

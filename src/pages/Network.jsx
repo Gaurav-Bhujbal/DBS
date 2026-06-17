@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { MapPin, Globe, Zap, ArrowRight } from "lucide-react";
 import { TopBar, Nav, Footer } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
-import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import logisticsBanner from "@/assets/dbs/img10.jpg";
 import { Link } from "react-router-dom"
 
@@ -92,11 +91,6 @@ export default function Network() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-3xl text-left"
                     >
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
-                        />
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
                             {"Connecting India's ".split("").map((char, i) => (
                                 <motion.span key={`n1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>

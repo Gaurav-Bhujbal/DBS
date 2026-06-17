@@ -1,5 +1,4 @@
 import calcTruck from "@/assets/dbs/img5.jpg";
-import dbsLogo from "@/assets/dbs/DBSLogo.png";
 import { PageShell } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
 
@@ -37,11 +36,6 @@ export default function Quote() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-3xl text-left"
                     >
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-24 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/20"
-                        />
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white drop-shadow-lg">
                             {"Get an Instant ".split("").map((char, i) => (
                                 <motion.span key={`q1-${i}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.04 }}>

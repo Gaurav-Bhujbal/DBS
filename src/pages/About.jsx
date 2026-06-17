@@ -250,11 +250,6 @@ export default function About() {
                             transition={{ duration: 0.6 }}
                             className="max-w-xl"
                         >
-                            <img
-                                src={dbsLogo}
-                                alt="DBS Express Cargo Logo"
-                                className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
-                            />
                             <div className="text-xs uppercase tracking-[0.25em] text-[var(--brand-blue)] font-bold mb-3">Superior Standards</div>
                             <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight">Why We Move Better</h2>
                         </motion.div>
@@ -311,11 +306,6 @@ export default function About() {
                         transition={{ duration: 0.6 }}
                         className="text-left"
                     >
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-20 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-md border border-slate-100"
-                        />
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/80 backdrop-blur-md border border-blue-100/50 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[var(--brand-blue)] mb-5 shadow-sm shadow-blue-500/5">
                             <Activity className="h-3.5 w-3.5 animate-pulse text-[var(--brand-blue)]" /> Enterprise Logistics
                         </div>
@@ -605,11 +595,6 @@ export default function About() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <img
-                            src={dbsLogo}
-                            alt="DBS Express Cargo Logo"
-                            className="h-16 w-auto object-contain mb-6 bg-white/90 backdrop-blur-md p-2 rounded-xl shadow-lg border border-white/20"
-                        />
                         <div className="text-xs uppercase tracking-[0.3em] text-primary-foreground/60 font-bold mb-3">Professional Logistics</div>
                         <h2 className="font-serif text-3xl md:text-5xl leading-tight font-bold tracking-tight">
                             Driving growth & efficiency through professional, tailored solutions.
