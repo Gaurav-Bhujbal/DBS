@@ -275,19 +275,40 @@ export function Footer() {
                     ))}
                 </div>
 
-                <div className="py-8 md:py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12">
+                <div className="py-8 md:py-12 flex flex-col gap-8 md:gap-10">
+                    <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8 justify-between">
                         <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)]">
+                            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)] shrink-0">
                                 <Phone className="h-5 w-5" />
                             </div>
                             <div>
-                                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Customer Support</div>
-                                <div className="font-bold">+91 9527931492</div>
+                                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Pune Booking & Delivery Team</div>
+                                <div className="font-bold whitespace-nowrap">9552513629, 9850809181</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)]">
+                            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)] shrink-0">
+                                <Phone className="h-5 w-5" />
+                            </div>
+                            <div>
+                                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">NCR Zone Delivery Team</div>
+                                <div className="font-bold whitespace-nowrap">9810627461</div>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)] shrink-0">
+                                <Phone className="h-5 w-5" />
+                            </div>
+                            <div>
+                                <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">All Operational Head</div>
+                                <div className="font-bold whitespace-nowrap">9527931492</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-6 border-t border-white/10">
+                        <div className="flex items-center gap-4">
+                            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center text-[var(--brand-accent)] shrink-0">
                                 <Mail className="h-5 w-5" />
                             </div>
                             <div>
@@ -295,9 +316,9 @@ export function Footer() {
                                 <div className="font-bold">pune@dbsexpresscargo.com</div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="text-slate-500 text-sm font-medium">(c) 2026 DBS Express Cargo. All Rights Reserved.</div>
+                        <div className="text-slate-500 text-sm font-medium">(c) 2026 DBS Express Cargo. All Rights Reserved.</div>
+                    </div>
                 </div>
             </div>
 
