@@ -1,31 +1,181 @@
 import { useEffect } from "react";
-import { MapPin, Globe, Zap, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Globe, Zap, ArrowRight } from "lucide-react";
 import { TopBar, Nav, Footer } from "@/components/site/SiteChrome";
 import { motion } from "framer-motion";
 import logisticsBanner from "@/assets/dbs/img10.jpg";
 import { Link } from "react-router-dom"
 
-const CITIES = [
-    { name: "Pune", state: "Maharashtra", tag: "Headquarters", priority: true },
-    { name: "Mumbai", state: "Maharashtra", tag: "Priority Hub", priority: true },
-    { name: "Delhi", state: "National Capital Territory", tag: "Priority Hub", priority: true },
-    { name: "Bengaluru", state: "Karnataka", tag: "Priority Hub", priority: true },
-    { name: "Hyderabad", state: "Telangana", tag: "Priority Hub", priority: true },
-    { name: "Ahmedabad", state: "Gujarat", tag: "Priority Hub", priority: true },
-    { name: "Chennai", state: "Tamil Nadu", tag: "Active Hub", priority: false },
-    { name: "Kolkata", state: "West Bengal", tag: "Active Hub", priority: false },
-    { name: "Jaipur", state: "Rajasthan", tag: "Active Hub", priority: false },
-    { name: "Chandigarh", state: "Punjab", tag: "Active Hub", priority: false },
-    { name: "Lucknow", state: "Uttar Pradesh", tag: "Active Hub", priority: false },
-    { name: "Nagpur", state: "Maharashtra", tag: "Active Hub", priority: false },
-    { name: "Surat", state: "Gujarat", tag: "Active Hub", priority: false },
-    { name: "Indore", state: "Madhya Pradesh", tag: "Active Hub", priority: false },
-    { name: "Coimbatore", state: "Tamil Nadu", tag: "Active Hub", priority: false },
-    { name: "Kochi", state: "Kerala", tag: "Active Hub", priority: false },
-    { name: "Bhopal", state: "Madhya Pradesh", tag: "Active Hub", priority: false },
-    { name: "Patna", state: "Bihar", tag: "Active Hub", priority: false },
-    { name: "Vadodara", state: "Gujarat", tag: "Active Hub", priority: false },
-    { name: "Nashik", state: "Maharashtra", tag: "Active Hub", priority: false },
+const stations = [
+    {
+        city: "Ahmedabad",
+        address: "Godown No. 40, Vikash Estate Near Aslali Police Station, Aslali, Ahmedabad",
+        contact: "9558494365"
+    },
+    {
+        city: "Baddi",
+        address: "Pinjor Baddi Road, Nava Nagar, Distt. Panchkulla (Haryana)",
+        contact: "9736039460"
+    },
+    {
+        city: "Ballabhgarh",
+        address: "Shop No. 10, Opp. Plot No. 82, Near Bharat Dharam Kanta, Sector-25, Faridabad, Ballabhgarh",
+        contact: "8287944864"
+    },
+    {
+        city: "Bangalore",
+        address: "DBS Express Cargo Pvt Ltd, Chetan Complex, Plot No. 36/37, Adakamaranhalli Village, Dasanpura Hobli, Makali Post, Behind Himalaya Drug Company, Bangalore North - 562123",
+        contact: "9740757111"
+    },
+    {
+        city: "Barodra",
+        address: "Express Cargo Containers D8, D9 Maruti Estate, Golden Chokadi Near Halol Toll, Vadodara - 390022",
+        contact: "8448394628"
+    },
+    {
+        city: "Bawal",
+        address: "Near Bajaj Service Agencies, Rewari Road, Bawal (Haryana)",
+        contact: "9812117883"
+    },
+    {
+        city: "Bhiwandi",
+        address: "Gala No-3, Wanmala Compound, Opp. Amul Warehouse, Near Mayur Kata, Rehnal, Bhiwandi - 421302",
+        contact: "7769854630"
+    },
+    {
+        city: "Chakan",
+        address: "Pradesh Vasti, Chakan, Near Pradesh Ware House, Pune-Nasik Highway, Chimbli Phata, Pune - 410501",
+        contact: "9850809181"
+    },
+    {
+        city: "Chandigarh",
+        address: "Village Dariya, Near H.P. Gas Agency, Old Makkhan Majra Road, Chandigarh - 160101",
+        contact: "8448394630"
+    },
+    {
+        city: "Chennai",
+        address: "Plot No. 30, Padma Complex, Quans Town, VGP Industrial Complex, Chennai Bangalore Highway, Chettipetu Village, Chennai - 600124",
+        contact: "9362755999"
+    },
+    {
+        city: "Delhi",
+        address: "Plot No. 141, Najafgarh Gurgaon Road, Opp. Sarvodaya Vidhyala, Kapashera, New Delhi - 110087",
+        contact: ["011-32531174", "9310031174"]
+    },
+    {
+        city: "Dharuhera",
+        address: "Ward No. 5, Shop No. 7, Near Hanuman Mandir, Sohna Road, Dharuhera (Haryana)",
+        contact: "9466755807"
+    },
+    {
+        city: "Faridabad",
+        address: "Plot No. 604/472, Gali No. 7, Near Sec-29, By Pass Road, Baselwa Colony, Old Faridabad",
+        contact: ["0129-2505259", "8010351826"]
+    },
+    {
+        city: "Fursungi",
+        address: "SR No. 133/3/4, Bhadale Wasti, Pune-Saswad Road, Near Laxmi Hotel, Uruli Devachi, Fursungi, Pune - 412308",
+        contact: "9130097289"
+    },
+    {
+        city: "Gurgaon",
+        address: "Plot No. 165/184, Kherki Dhaula, Near Jarshi India Co., Gurgaon - 122001",
+        contact: ["0124-3209441", "9810627461"]
+    },
+    {
+        city: "Haridwar",
+        address: "Near Barrier No. 06, Rewali Mahdood Road, Bahadrabad, Haridwar - 247449",
+        contact: "9359284640"
+    },
+    {
+        city: "Halol",
+        address: "UM Auto Comp Pvt Ltd, Shed No.1, GMC Compound, Near Rinki Chowadi Dunia, Halol, Gujarat - 389350",
+        contact: "8168010256"
+    },
+    {
+        city: "Hyderabad",
+        address: "Plot No. 11/2, Opp. Manjeera Water Works, Bandlaguda, Ramchandra Puram, Patancheru, Medak Dist.",
+        contact: "9014161211"
+    },
+    {
+        city: "Jaipur",
+        address: "N.H.8, Bhardhana Mandi, Near Milan Cinema, Road No.14, VKI Industrial Area, Jaipur - 302013",
+        contact: ["9468368723", "7339968723"]
+    },
+    {
+        city: "Ludhiana",
+        address: "Plot No.3576 ST, No.5, Heera Nagar, Near Arora Clinic, Ludhiana - 141007",
+        contact: "8448394629"
+    },
+    {
+        city: "Nasik",
+        address: "Shop No.3, Nirmans Ashiyana Building A, Near Swaraj Tractor House, Behind Nivrutti Complex, Dwarka, Nasik - 422001",
+        contact: "9881500606"
+    },
+    {
+        city: "Noida",
+        address: "Plot No.35, Village Habibipur, Toy City, Greater Noida - 201306",
+        contact: ["8010351818", "9910941992", "0120-3261339"]
+    },
+    {
+        city: "Noida 63",
+        address: "D-247/47, Village Chjarshi, Noida Sector 63 - 201301",
+        contact: "7529998918"
+    },
+    {
+        city: "Okhla",
+        address: "Plot No.98, Coca Cola Building, Tekhand Phase-I, Okhla, New Delhi - 110020",
+        contact: "8130189878"
+    },
+    {
+        city: "Puducherry",
+        address: "Plot No.9, Second Cross Street, Sabri Nagar Dharumapuri, Puducherry - 9",
+        contact: "9362157999"
+    },
+    {
+        city: "Pune",
+        address: "4th Floor, D C Chamber, Opp. KSB Pump Ltd, Mumbai-Pune Road, Pimpri - 411018",
+        contact: ["9822435702", "9370690424", "020-32402878", "32609565"]
+    },
+    {
+        city: "Ranjangaon",
+        address: "Near I B P Petrol Pump, Ranjangaon-Shikarpur Road, Ranjangaon - 412209",
+        contact: "9763431106"
+    },
+    {
+        city: "Rohtak",
+        address: "Jind Bye Pass Road, Rohtak, Haryana - 124001",
+        contact: "9813086558"
+    },
+    {
+        city: "Rudrapur",
+        address: "Chawla Compound, Chawla Cinema, Kashipur Road, Rudrapur - 263153",
+        contact: ["9358645783", "9358645183"]
+    },
+    {
+        city: "Sahibabad",
+        address: "Bld. No. 281/1, Village Karkar Mora, Industrial Area, Site-4, Sahibabad - 201010",
+        contact: "8882219737"
+    },
+    {
+        city: "Sonipat",
+        address: "Main GT Road, Near Bank of Baroda, Dahiya Market, Shop No.20, Kundli, Sonipat (HR)",
+        contact: "9215045777"
+    },
+    {
+        city: "Tikri Border",
+        address: "Plot No. 58/20/1, Near Shree Ram Dharam Kanta, Main PUC Road, Tikri Border, Delhi - 110041",
+        contact: "9015488042"
+    },
+    {
+        city: "Vadodara",
+        address: "D-8, D-9, Maruti Estate, Near Halol Highway Toll Naka, Golden Chokdi, Harni Road, Vadodara - 390022",
+        contact: "8072746326"
+    },
+    {
+        city: "Vapi",
+        address: "Off 309, 3rd Floor, Arihant Complex, Near Vishal Mega Mart, Fuwara Chowk, GIDC, Vapi - 396195 (Gujarat)",
+        contact: ["0260-2425747", "3096382"]
+    }
 ];
 
 const REGIONS = [
@@ -122,67 +272,46 @@ export default function Network() {
                 </div>
             </section>
 
-            {/* City Grid */}
+            {/* Stations Grid */}
             <ScrollReveal>
                 <section className="bg-slate-50 py-16 sm:py-24">
                     <div className="mx-auto max-w-7xl px-6">
                         <div className="text-center max-w-3xl mx-auto mb-14">
-                            <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">City Network</div>
-                            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--brand-navy)] mb-4">Cities We Serve</h2>
+                            <div className="text-[var(--brand-blue)] font-bold tracking-widest uppercase text-sm mb-4">Station Network</div>
+                            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--brand-navy)] mb-4">Our Stations</h2>
                             <p className="text-lg text-muted-foreground">
-                                From metros to emerging business hubs — our network ensures your cargo reaches every demand centre with predictable SLAs.
+                                {stations.length} stations across India — from metros to industrial corridors, we're always close to your cargo.
                             </p>
                         </div>
 
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="h-px flex-1 bg-slate-200" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 px-3">Priority Hubs</span>
-                            <div className="h-px flex-1 bg-slate-200" />
-                        </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
-                            {CITIES.filter((c) => c.priority).map((city, i) => (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {stations.map((station, i) => (
                                 <motion.div
-                                    key={city.name}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    key={station.city}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: i * 0.06, duration: 0.4 }}
-                                    whileHover={{ y: -6, scale: 1.03 }}
-                                    className="group bg-white border border-[var(--brand-blue)]/20 rounded-2xl p-5 shadow-sm hover:shadow-xl hover:border-[var(--brand-blue)]/50 transition-all text-center"
+                                    transition={{ delay: i * 0.03, duration: 0.4 }}
+                                    whileHover={{ y: -4 }}
+                                    className="group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-[var(--brand-blue)]/30 transition-all"
                                 >
-                                    <div className="h-10 w-10 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] flex items-center justify-center mx-auto mb-3 group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all">
-                                        <MapPin className="h-5 w-5" />
+                                    <div className="flex items-start gap-4">
+                                        <div className="h-10 w-10 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[var(--brand-blue)] group-hover:text-white transition-all">
+                                            <MapPin className="h-5 w-5" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <h3 className="font-bold text-[var(--brand-navy)] text-base">{station.city}</h3>
+                                            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{station.address}</p>
+                                            <div className="mt-3 flex items-start gap-2 text-sm font-medium text-[var(--brand-blue)]">
+                                                <Phone className="h-4 w-4 flex-shrink-0 mt-0.5" />
+                                                <span>
+                                                    {Array.isArray(station.contact)
+                                                        ? station.contact.join(" / ")
+                                                        : station.contact}
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="font-bold text-[var(--brand-navy)] text-sm">{city.name}</div>
-                                    <div className="text-xs text-muted-foreground mt-1">{city.state}</div>
-                                    <span className="mt-2 inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--brand-blue)]/10 text-[var(--brand-blue)]">
-                                        {city.tag}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="h-px flex-1 bg-slate-200" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 px-3">Active Hubs</span>
-                            <div className="h-px flex-1 bg-slate-200" />
-                        </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
-                            {CITIES.filter((c) => !c.priority).map((city, i) => (
-                                <motion.div
-                                    key={city.name}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.05, duration: 0.4 }}
-                                    whileHover={{ y: -5, scale: 1.03 }}
-                                    className="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all text-center"
-                                >
-                                    <div className="h-8 w-8 rounded-lg bg-slate-50 text-slate-400 flex items-center justify-center mx-auto mb-2 group-hover:bg-[var(--brand-blue)]/10 group-hover:text-[var(--brand-blue)] transition-all">
-                                        <MapPin className="h-4 w-4" />
-                                    </div>
-                                    <div className="font-semibold text-[var(--brand-navy)] text-sm">{city.name}</div>
-                                    <div className="text-[11px] text-muted-foreground mt-0.5">{city.state}</div>
                                 </motion.div>
                             ))}
                         </div>
