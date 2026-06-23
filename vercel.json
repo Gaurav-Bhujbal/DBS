@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/DBSEXP/:path*",
+            "destination": "http://117.248.110.22/DBSEXP/:path*"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
