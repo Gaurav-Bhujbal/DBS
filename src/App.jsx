@@ -6,6 +6,7 @@ import Services from "@/pages/Services";
 import Contact from "@/pages/Contact";
 import Network from "@/pages/Network";
 import Quote from "@/pages/Quote";
+import Tracking from "@/pages/Tracking";
 import { WhatsAppFab } from "@/components/site/SiteChrome";
 
 function ScrollToTop() {
@@ -53,6 +54,7 @@ function AppRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/network" element={<Network />} />
         <Route path="/quote" element={<Quote />} />
+        <Route path="/tracking" element={<Tracking />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <WhatsAppFab />

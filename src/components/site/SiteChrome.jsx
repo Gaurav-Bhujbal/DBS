@@ -128,9 +128,9 @@ export function Nav() {
                         </nav>
 
                         <div className="hidden sm:flex items-center gap-2">
-                            <button className="px-5 py-2.5 text-sm font-bold text-slate-700 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors">
+                            <Link to="/tracking" className="px-5 py-2.5 text-sm font-bold text-slate-700 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors">
                                 Tracking
-                            </button>
+                            </Link>
                             <button className="flex items-center gap-2 px-6 py-2.5 text-sm font-black text-white rounded-full bg-[var(--brand-blue)] shadow-lg shadow-[var(--brand-blue)]/30 hover:bg-[var(--brand-navy)] transition-colors">
                                 <LogIn className="h-4 w-4" />
                                 Log In
@@ -175,9 +175,9 @@ export function Nav() {
                                     ),
                                 )}
                                 <div className="pt-3 pb-1 grid grid-cols-2 gap-3">
-                                    <button className="h-12 rounded-2xl border border-slate-200 font-bold text-slate-700 text-sm hover:bg-slate-50 transition-colors">
+                                    <Link to="/tracking" onClick={() => setMobileOpen(false)} className="h-12 rounded-2xl border border-slate-200 font-bold text-slate-700 text-sm hover:bg-slate-50 transition-colors flex items-center justify-center">
                                         Tracking
-                                    </button>
+                                    </Link>
                                     <button className="h-12 rounded-2xl bg-[var(--brand-blue)] text-white font-black text-sm flex items-center justify-center gap-2 shadow-lg shadow-[var(--brand-blue)]/20">
                                         <LogIn className="h-4 w-4" /> Log In
                                     </button>
@@ -214,7 +214,7 @@ export function Footer() {
         {
             h: "Support",
             links: [
-                ["Track Shipment", "/"],
+                ["Track Shipment", "/tracking"],
                 ["Trace LR", "/"],
                 ["Help Center", "/contact"],
                 ["FAQs", "/about"],
