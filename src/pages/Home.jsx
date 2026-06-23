@@ -250,9 +250,9 @@ function Hero() {
                             whileTap={{ scale: 0.95 }}
                             className="rounded-full border-2 border-white/30 bg-white/5 backdrop-blur-sm px-10 py-4 text-base font-bold text-white shadow-lg hover:bg-white/15 transition-all"
                         >
-                            <a href="http://117.248.110.22/DBSEXP/CSM/TRACKLR.ASPX" target="_blank">
+                            <Link to="/tracking">
                                 Track Shipment
-                            </a>
+                            </Link>
                         </motion.button>
                     </motion.div>
 
