@@ -29,10 +29,15 @@ export function TopBar() {
     return (
         <div className="hidden md:block bg-[var(--brand-navy)] text-white/90">
             <div className="mx-auto max-w-7xl px-6 py-2.5 flex items-center justify-between text-[13px] font-medium">
-                <div className="flex items-center gap-6">
-                    <a href="tel:+919527931492" className="flex items-center gap-2 hover:text-white transition-colors">
+                <div className="flex items-center gap-2">
+                    <a href="tel:+91 9552513629" className="flex items-center gap-2 hover:text-white transition-colors">
                         <Phone className="h-4 w-4 text-[var(--brand-accent)]" />
-                        <span>+91 9527931492</span>
+                        <span>+91 9552513629</span>
+                    </a>
+                    <div className="h-3 w-px bg-white/20" />
+                    <a href="tel:+91 9850809181" className="flex items-center gap-2 hover:text-white transition-colors">
+                         
+                        <span>+91 9850809181</span>
                     </a>
                     <div className="h-3 w-px bg-white/20" />
                     <a href="mailto:pune@dbsexpresscargo.com" className="flex items-center gap-2 hover:text-white transition-colors">
@@ -328,7 +333,7 @@ export function Footer() {
 }
 
 export function WhatsAppFab() {
-    const phone = "919527931492";
+    const phone = "919822435702";
     const message = encodeURIComponent(
         "Hi DBS Express Cargo, I would like to enquire about your logistics services.",
     );

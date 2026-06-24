@@ -185,20 +185,23 @@ export default function Tracking() {
 
             setCnData({
                 branch,
-                cnNo:       extractText(doc, "CNNO"),
-                pkgs:       extractText(doc, "Pkgs"),
-                actualWt:   extractText(doc, "ActWt"),
-                incNo:      extractText(doc, "IncNo"),
-                ewayBillNo: extractText(doc, "EwayBillNo"),
-                payType:    extractText(doc, "PayType"),
-                cnRemark:   extractText(doc, "CnRemark"),
-                date:        extractText(doc, "Date"),
-                origin:      extractText(doc, "Origin"),
-                destination: extractText(doc, "Destination"),
-                units:       extractText(doc, "Units"),
-                chargeWt:    extractText(doc, "ChargeWt"),
-                poNo:        extractText(doc, "PONO"),
-                excIncNo:    extractText(doc, "ExcIncNo"),
+                cnNo:         extractText(doc, "CNNO"),
+                consignor:    extractText(doc, "Consignor"),
+                consignee:    extractText(doc, "Consignee"),
+                pkgs:         extractText(doc, "Pkgs"),
+                actualWt:     extractText(doc, "ActWt"),
+                incNo:        extractText(doc, "IncNo"),
+                ewayBillNo:   extractText(doc, "EwayBillNo"),
+                payType:      extractText(doc, "PayType"),
+                cnRemark:     extractText(doc, "CnRemark"),
+                date:         extractText(doc, "Date"),
+                origin:       extractText(doc, "Origin"),
+                destination:  extractText(doc, "Destination"),
+                units:        extractText(doc, "Units"),
+                chargeWt:     extractText(doc, "ChargeWt"),
+                poNo:         extractText(doc, "PONO"),
+                excIncNo:     extractText(doc, "ExcIncNo"),
+                billingParty: extractText(doc, "BillingParty"),
             });
 
             setMovementHtml(extractMovementHtml(doc));
@@ -290,6 +293,8 @@ export default function Tracking() {
                                         <div className="flex-1 border-r border-gray-200">
                                             <LabelValue label="Branch" value={cnData.branch} />
                                             <LabelValue label="CN NO" value={cnData.cnNo} />
+                                            <LabelValue label="Consignor" value={cnData.consignor} />
+                                            <LabelValue label="Consignee" value={cnData.consignee} />
                                             <LabelValue label="Pkgs" value={cnData.pkgs} />
                                             <LabelValue label="Actual Wt." value={cnData.actualWt} />
                                             <LabelValue label="Inc. No" value={cnData.incNo} />
@@ -305,6 +310,7 @@ export default function Tracking() {
                                             <LabelValue label="Charge Wt." value={cnData.chargeWt} />
                                             <LabelValue label="PO./ Shpmt No." value={cnData.poNo} />
                                             <LabelValue label="Exc. Inc. No." value={cnData.excIncNo} />
+                                            <LabelValue label="Billing party" value={cnData.billingParty} />
                                         </div>
                                     </div>
                                 )}
