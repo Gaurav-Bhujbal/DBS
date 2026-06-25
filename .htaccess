@@ -1,14 +1,4 @@
 Options -MultiViews
 RewriteEngine On
-RewriteBase /
-
-# Proxy: /api/tracking -> PHP proxy (must come before SPA fallback)
-RewriteRule ^api/tracking$ /api/tracking.php [L]
-
-# Proxy: /DBSEXP/* -> PHP asset proxy (tracking images/resources)
-RewriteRule ^DBSEXP/(.*)$ /dbsexp-proxy.php?path=$1 [L,QSA]
-
-# SPA routing: send all unmatched requests to index.html
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]
